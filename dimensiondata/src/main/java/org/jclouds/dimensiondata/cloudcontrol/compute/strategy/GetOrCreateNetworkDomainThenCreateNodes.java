@@ -23,6 +23,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.inject.Inject;
+import org.jclouds.Constants;
 import org.jclouds.compute.config.CustomizationResponse;
 import org.jclouds.compute.domain.NodeMetadata;
 import org.jclouds.compute.domain.Template;
@@ -60,7 +61,7 @@ public class GetOrCreateNetworkDomainThenCreateNodes extends CreateNodesWithGrou
    @Inject
    protected GetOrCreateNetworkDomainThenCreateNodes(final CreateNodeWithGroupEncodedIntoName addNodeWithGroupStrategy,
          final ListNodesStrategy listNodesStrategy, final GroupNamingConvention.Factory namingConvention,
-         final ListeningExecutorService userExecutor,
+         @Named(Constants.PROPERTY_USER_THREADS)final ListeningExecutorService userExecutor,
          final CustomizeNodeAndAddToGoodMapOrPutExceptionIntoBadMap.Factory customizeNodeAndAddToGoodMapOrPutExceptionIntoBadMapFactory,
          final DimensionDataCloudControlApi api, final ComputeServiceConstants.Timeouts timeouts,
          @Named(NETWORK_DOMAIN_NORMAL_PREDICATE) final Predicate<String> networkDomainNormalPredicate,

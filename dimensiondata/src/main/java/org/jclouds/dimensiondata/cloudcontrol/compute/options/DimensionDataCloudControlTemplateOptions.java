@@ -29,6 +29,9 @@ public class DimensionDataCloudControlTemplateOptions extends TemplateOptions im
    private String networkDomainName;
    private String defaultPrivateIPv4BaseAddress;
    private Integer defaultPrivateIPv4PrefixSize;
+   private boolean autoCreateNatRule = true;
+   private String networkDomainId;
+   private String vlanId;
 
    public String getNetworkDomainName() {
       return networkDomainName;
@@ -40,6 +43,21 @@ public class DimensionDataCloudControlTemplateOptions extends TemplateOptions im
 
    public Integer getDefaultPrivateIPv4PrefixSize() {
       return defaultPrivateIPv4PrefixSize;
+   }
+
+   public String getNetworkDomainId()
+   {
+      return networkDomainId;
+   }
+
+   public String getVlanId()
+   {
+      return vlanId;
+   }
+
+   public boolean isAutoCreateNatRule()
+   {
+      return autoCreateNatRule;
    }
 
    public DimensionDataCloudControlTemplateOptions networkDomainName(@Nullable String networkDomainName) {
@@ -56,6 +74,24 @@ public class DimensionDataCloudControlTemplateOptions extends TemplateOptions im
    public DimensionDataCloudControlTemplateOptions defaultPrivateIPv4PrefixSize(
          @Nullable Integer defaultPrivateIPv4PrefixSize) {
       this.defaultPrivateIPv4PrefixSize = defaultPrivateIPv4PrefixSize;
+      return this;
+   }
+
+   public DimensionDataCloudControlTemplateOptions networkDomainId(@Nullable String networkDomainId)
+   {
+      this.networkDomainId = networkDomainId;
+      return this;
+   }
+
+   public DimensionDataCloudControlTemplateOptions vlanId(@Nullable String vlanId)
+   {
+      this.vlanId = vlanId;
+      return this;
+   }
+
+   public DimensionDataCloudControlTemplateOptions autoCreateNatRule(boolean autoCreateNatRule)
+   {
+      this.autoCreateNatRule = autoCreateNatRule;
       return this;
    }
 
@@ -91,6 +127,23 @@ public class DimensionDataCloudControlTemplateOptions extends TemplateOptions im
             that.defaultPrivateIPv4BaseAddress != null) {
          return false;
       }
+
+      if (networkDomainId != null ?
+              !networkDomainId.equals(that.networkDomainId) :
+              that.networkDomainId != null) {
+         return false;
+      }
+
+      if (vlanId != null ?
+              !vlanId.equals(that.vlanId) :
+              that.vlanId != null) {
+         return false;
+      }
+
+      if (isAutoCreateNatRule() != that.isAutoCreateNatRule()) {
+         return false;
+      }
+
       return defaultPrivateIPv4PrefixSize != null ?
             defaultPrivateIPv4PrefixSize.equals(that.defaultPrivateIPv4PrefixSize) :
             that.defaultPrivateIPv4PrefixSize == null;
@@ -141,6 +194,29 @@ public class DimensionDataCloudControlTemplateOptions extends TemplateOptions im
          return options.defaultPrivateIPv4PrefixSize(defaultPrivateIPv4PrefixSize);
       }
 
+      /**
+       * @see #networkDomainId
+       */
+      public static DimensionDataCloudControlTemplateOptions networkDomainId(final String networkDomainId) {
+         final DimensionDataCloudControlTemplateOptions options = new DimensionDataCloudControlTemplateOptions();
+         return options.networkDomainId(networkDomainId);
+      }
+
+      /**
+       * @see #vlanId
+       */
+      public static DimensionDataCloudControlTemplateOptions vlanId(final String vlanId) {
+         final DimensionDataCloudControlTemplateOptions options = new DimensionDataCloudControlTemplateOptions();
+         return options.vlanId(vlanId);
+      }
+
+      /**
+       * @see #isAutoCreateNatRule
+       */
+      public static DimensionDataCloudControlTemplateOptions autoCreateNatRule(final boolean isAutoCreateNatRule) {
+         final DimensionDataCloudControlTemplateOptions options = new DimensionDataCloudControlTemplateOptions();
+         return options.autoCreateNatRule(isAutoCreateNatRule);
+      }
    }
 
    /**

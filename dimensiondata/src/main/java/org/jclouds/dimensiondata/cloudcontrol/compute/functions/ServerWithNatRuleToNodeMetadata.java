@@ -44,6 +44,7 @@ import static com.google.common.collect.Iterables.find;
 import static org.jclouds.location.predicates.LocationPredicates.idEquals;
 
 @Singleton
+public
 class ServerWithNatRuleToNodeMetadata implements Function<ServerWithExternalIp, NodeMetadata> {
 
    private static final Map<State, NodeMetadata.Status> serverStateToNodeStatus = ImmutableMap.<State, NodeMetadata.Status>builder()
