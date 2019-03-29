@@ -57,6 +57,14 @@ public class TemplateWithNetworkIds implements Template {
       return delegate.getOptions();
    }
 
+   public String getNetworkDomainId() {
+      return networkDomainId;
+   }
+
+   public String getVlanId() {
+      return vlanId;
+   }
+
    @Override
    public Template clone() {
       return new TemplateWithNetworkIds(delegate.clone(), networkDomainId, vlanId);
